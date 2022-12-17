@@ -8,12 +8,12 @@ import useIvyPaymentCartContext from '../hooks/useIvyPaymentCartContext';
 import useIvyPaymentFormikContext from '../hooks/useIvyPaymentFormikContext';
 import RadioInput from '../../../../components/common/Form/RadioInput';
 import Button from '../../../../components/common/Button';
+import RootElement from '../../../../utils/rootElement';
 import { __ } from '../../../../i18n';
 
 function IvyPaymentRenderer({ method, selected }) {
-  /* eslint-disable no-console */
-  console.log(method, selected);
-  /* eslint-enable no-console */
+  const ivyPaymentLogoUrl = `${RootElement.getFilePath()}/Esparksinc_IvyPayment/images/ivylogo.svg`;
+
   const methodCode = method.code;
   const { placeOrder } = useIvyPayment();
   const { setPageLoader } = useIvyPaymentAppContext();
@@ -39,7 +39,7 @@ function IvyPaymentRenderer({ method, selected }) {
       htmlFor={`paymentMethod_${methodCode}`}
       className="inline-block pl-2 cursor-pointer"
     >
-      <span>{__('Ivy Payment Logo')}</span>
+      <img src={ivyPaymentLogoUrl} alt={__('Amazon Pay')} />
     </label>
   );
 
