@@ -7,6 +7,9 @@ export default function useIvyPayment() {
   const { setPageLoader, appDispatch } = useIvyPaymentAppContext();
 
   const placeOrder = useCallback(async () => {
+    /* eslint-disable no-console */
+    console.log('placeOrder');
+    /* eslint-enable no-console */
     try {
       setPageLoader(true);
       await createIvyCheckoutSession(appDispatch, false);
