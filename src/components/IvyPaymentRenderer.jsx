@@ -7,7 +7,6 @@ import useIvyPaymentAppContext from '../hooks/useIvyPaymentAppContext';
 import useIvyPaymentCartContext from '../hooks/useIvyPaymentCartContext';
 import useIvyPaymentFormikContext from '../hooks/useIvyPaymentFormikContext';
 import RadioInput from '../../../../components/common/Form/RadioInput';
-import Button from '../../../../components/common/Button';
 import RootElement from '../../../../utils/rootElement';
 import { __ } from '../../../../i18n';
 
@@ -54,9 +53,13 @@ function IvyPaymentRenderer({ method, selected }) {
         onChange={paymentSelectionHandler}
       />
       <div className={isSelected ? 'mt-4 ml-6' : 'hidden h-0'}>
-        <Button click={placeOrder}>
+        <button
+          onClick={placeOrder}
+          className="ivy-checkout-button"
+          type="button"
+        >
           <span>{__('Ivy Payment')}</span>
-        </Button>
+        </button>
       </div>
     </>
   );
