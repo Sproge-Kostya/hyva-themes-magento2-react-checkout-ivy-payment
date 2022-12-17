@@ -42,8 +42,14 @@ function IvyPaymentRenderer({ method, selected }) {
     </label>
   );
 
+  const css = isSelected
+    ? `.button.btn.btn-primary.btn-size-lg.false {
+        display: none !important;} `
+    : ``;
+
   return (
     <>
+      <style>{css}</style>
       <RadioInput
         label={radioLabel}
         value={method.code}
