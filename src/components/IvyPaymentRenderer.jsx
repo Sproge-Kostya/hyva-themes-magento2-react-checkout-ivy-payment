@@ -43,7 +43,7 @@ function IvyPaymentRenderer({ method, selected }) {
   );
 
   const css = isSelected
-    ? `.button.btn.btn-primary.btn-size-lg.false {
+    ? `button.btn.btn-primary.btn-size-lg.false {
         display: none !important;} `
     : ``;
 
@@ -61,7 +61,7 @@ function IvyPaymentRenderer({ method, selected }) {
       <div className={isSelected ? 'mt-4 ml-6' : 'hidden h-0'}>
         <button
           onClick={placeOrder}
-          className="ivy-checkout-button"
+          className="ivy-checkout-button ivy-product-button"
           type="button"
         >
           <span>{__('Ivy Payment')}</span>
