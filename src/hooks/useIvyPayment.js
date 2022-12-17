@@ -11,20 +11,11 @@ export default function useIvyPayment() {
   const placeOrder = useCallback(async () => {
     try {
       setPageLoader(true);
-      /* eslint-disable no-console */
-      console.log('setPageLoader');
-      /* eslint-enable no-console */
       const response = await createIvyCheckoutSession(appDispatch, false);
-      /* eslint-disable no-console */
-      console.log(response);
-      /* eslint-enable no-console */
       if (response.redirectUrl !== '') {
-        if(window.hasOwnProperty('startIvyCheckout')){
-          /* eslint-disable no-console */
-          console.log('startIvyCheckout');
-          /* eslint-enable no-console */
+        if (Object.prototype.hasOwnProperty.call(window, 'startIvyCheckout')) {
           window.startIvyCheckout(response.redirectUrl, 'popup');
-        }else{
+        } else {
           setErrorMessage(__('not loading CDN for IvyCheckout'));
         }
       } else {
