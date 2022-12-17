@@ -2,6 +2,7 @@ import React, {useCallback, useEffect} from 'react';
 
 import {PAYMENT_METHOD_FORM} from '../../../../config';
 import {paymentMethodShape} from '../../../../utils/payment';
+import useIvyPayment from '../hooks/useIvyPayment';
 import useIvyPaymentAppContext from '../hooks/useIvyPaymentAppContext';
 import useIvyPaymentCartContext from '../hooks/useIvyPaymentCartContext';
 import useIvyPaymentFormikContext from '../hooks/useIvyPaymentFormikContext';
@@ -12,6 +13,7 @@ import {__} from '../../../../i18n';
 
 function IvyPaymentRenderer({method, selected}) {
     const methodCode = method.code;
+    const {placeOrder} = useIvyPayment();
     const {setPageLoader} = useIvyPaymentAppContext();
     const {setFieldValue} = useIvyPaymentFormikContext();
     const {isVirtualCart, setPaymentMethod, hasCartShippingAddress} = useIvyPaymentCartContext();
@@ -60,7 +62,7 @@ function IvyPaymentRenderer({method, selected}) {
                 onChange={paymentSelectionHandler}
             />
             <div className={isSelected ? 'mt-4 ml-6' : 'hidden h-0'}>
-                <Button onClick={}>
+                <Button onClick={placeOrder}>
                     <span>{__('Ivy Payment')}</span>
                 </Button>
             </div>
